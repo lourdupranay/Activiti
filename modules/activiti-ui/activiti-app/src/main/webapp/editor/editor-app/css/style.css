@@ -750,3 +750,23 @@ li.x-menu-list-item.x-menu-item-active a {
     cursor: pointer;
     z-index: 1;
 }
+
+.activiti-status {
+	border: 1px solid #3c3c3c;
+	margin: 2px;
+	height: 28px;
+	line-height: 20px;
+}
+
+.activiti-warning {
+	text-align: center;
+	background: yellow;
+	height: 100%;
+}
+
+.activiti-critical {
+	text-align: center;
+	background: #990000;
+	color: white;
+	height: 100%;
+}
