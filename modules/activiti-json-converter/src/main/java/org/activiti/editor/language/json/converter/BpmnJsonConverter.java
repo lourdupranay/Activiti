@@ -445,9 +445,10 @@ public class BpmnJsonConverter implements EditorJsonConstants, StencilConstants,
 
     ArrayNode shapesArrayNode = (ArrayNode) modelNode.get(EDITOR_CHILD_SHAPES);
 
-    if (shapesArrayNode == null || shapesArrayNode.size() == 0)
+    if (shapesArrayNode == null || shapesArrayNode.size() == 0){
       return bpmnModel;
-
+    }
+      
     boolean nonEmptyPoolFound = false;
     Map<String, Lane> elementInLaneMap = new HashMap<String, Lane>();
     // first create the pool structure
@@ -661,6 +662,8 @@ public class BpmnJsonConverter implements EditorJsonConstants, StencilConstants,
       Map<String, FlowWithContainer> allFlowMap, List<Gateway> gatewayWithOrderList) {
 
     for (FlowElement flowElement : flowElementList) {
+    	
+    	 parentContainer.addFlowElementToMap(flowElement);
 
       if (flowElement instanceof Event) {
         Event event = (Event) flowElement;
@@ -764,7 +767,7 @@ public class BpmnJsonConverter implements EditorJsonConstants, StencilConstants,
       for (JsonNode jsonChildNode : objectNode.get(EDITOR_CHILD_SHAPES)) {
 
         String stencilId = BpmnJsonConverterUtil.getStencilId(jsonChildNode);
-        if (STENCIL_SEQUENCE_FLOW.equals(stencilId) == false) {
+        if (!STENCIL_SEQUENCE_FLOW.equals(stencilId)) {
 
           GraphicInfo graphicInfo = new GraphicInfo();
 
@@ -805,14 +808,14 @@ public class BpmnJsonConverter implements EditorJsonConstants, StencilConstants,
 
         ObjectNode childNode = (ObjectNode) jsonChildNode;
         String stencilId = BpmnJsonConverterUtil.getStencilId(childNode);
-        if (STENCIL_SUB_PROCESS.equals(stencilId) || STENCIL_POOL.equals(stencilId) || STENCIL_LANE.equals(stencilId)) {
+        if (STENCIL_SUB_PROCESS.equals(stencilId) || STENCIL_POOL.equals(stencilId) || STENCIL_LANE.equals(stencilId) || STENCIL_EVENT_SUB_PROCESS.equals(stencilId)) {
           filterAllEdges(childNode, edgeMap, sourceAndTargetMap, shapeMap, sourceRefMap);
 
         } else if (STENCIL_SEQUENCE_FLOW.equals(stencilId) || STENCIL_ASSOCIATION.equals(stencilId)) {
 
           String childEdgeId = BpmnJsonConverterUtil.getElementId(childNode);
           JsonNode targetNode = childNode.get("target");
-          if (targetNode != null && targetNode.isNull() == false) {
+          if (targetNode != null && !targetNode.isNull()) {
             String targetRefId = targetNode.get(EDITOR_SHAPE_ID).asText();
             List<JsonNode> sourceAndTargetList = new ArrayList<JsonNode>();
             sourceAndTargetList.add(sourceRefMap.get(childNode.get(EDITOR_SHAPE_ID).asText()));
