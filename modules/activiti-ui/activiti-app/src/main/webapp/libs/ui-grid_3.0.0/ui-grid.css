@@ -45,11 +45,6 @@
 .ui-grid-invisible {
   visibility: hidden;
 }
-.ui-grid-contents-wrapper {
-  position: relative;
-  height: 100%;
-  width: 100%;
-}
 .ui-grid-top-panel-background {
   background: #f3f3f3;
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eeeeee), color-stop(1, #ffffff));
@@ -1211,84 +1206,84 @@ div.ui-grid-cell input.ng-valid {
 .ui-grid-icon-plus-squared:before {
   content: '\c350';
 }
-/* 'ì��' */
+/* '썐' */
 .ui-grid-icon-minus-squared:before {
   content: '\c351';
 }
-/* 'ì�‘' */
+/* '썑' */
 .ui-grid-icon-search:before {
   content: '\c352';
 }
-/* 'ì�’' */
+/* '썒' */
 .ui-grid-icon-cancel:before {
   content: '\c353';
 }
-/* 'ì�“' */
+/* '썓' */
 .ui-grid-icon-info-circled:before {
   content: '\c354';
 }
-/* 'ì�”' */
+/* '썔' */
 .ui-grid-icon-lock:before {
   content: '\c355';
 }
-/* 'ì�•' */
+/* '썕' */
 .ui-grid-icon-lock-open:before {
   content: '\c356';
 }
-/* 'ì�–' */
+/* '썖' */
 .ui-grid-icon-pencil:before {
   content: '\c357';
 }
-/* 'ì�—' */
+/* '썗' */
 .ui-grid-icon-down-dir:before {
   content: '\c358';
 }
-/* 'ì�˜' */
+/* '썘' */
 .ui-grid-icon-up-dir:before {
   content: '\c359';
 }
-/* 'ì�™' */
+/* '썙' */
 .ui-grid-icon-left-dir:before {
   content: '\c35a';
 }
-/* 'ì�š' */
+/* '썚' */
 .ui-grid-icon-right-dir:before {
   content: '\c35b';
 }
-/* 'ì�›' */
+/* '썛' */
 .ui-grid-icon-left-open:before {
   content: '\c35c';
 }
-/* 'ì�œ' */
+/* '썜' */
 .ui-grid-icon-right-open:before {
   content: '\c35d';
 }
-/* 'ì��' */
+/* '썝' */
 .ui-grid-icon-angle-down:before {
   content: '\c35e';
 }
-/* 'ì�ž' */
+/* '썞' */
 .ui-grid-icon-filter:before {
   content: '\c35f';
 }
-/* 'ì�Ÿ' */
+/* '썟' */
 .ui-grid-icon-sort-alt-up:before {
   content: '\c360';
 }
-/* 'ì� ' */
+/* '썠' */
 .ui-grid-icon-sort-alt-down:before {
   content: '\c361';
 }
-/* 'ì�¡' */
+/* '썡' */
 .ui-grid-icon-ok:before {
   content: '\c362';
 }
-/* 'ì�¢' */
+/* '썢' */
 .ui-grid-icon-menu:before {
   content: '\c363';
 }
-/* 'ì�£' */
+/* '썣' */
 .ui-grid-icon-spin5:before {
   content: '\ea61';
 }
-/* 'î©¡' */
+/* '' */
