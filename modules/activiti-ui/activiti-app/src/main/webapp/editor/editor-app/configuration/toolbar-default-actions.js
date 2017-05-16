@@ -478,8 +478,6 @@ angular.module('activitiModeler').controller('SaveModelCtrl', [ '$rootScope', '$
 angular.module('activitiModeler').controller('ValidateModelCtrl',['$scope', '$http', 
     function ($scope, $http) {
 
-	   // var editor = editorManager.getEditor();
-	   // var model = editorManager.getModel();
           var editor = $scope.editor;
 	      var model = $scope.editor.getJSON();
 
@@ -495,7 +493,6 @@ angular.module('activitiModeler').controller('ValidateModelCtrl',['$scope', '$ht
 			data: $scope.model.errors,
 			headerRowHeight: 28,
 			enableRowSelection: true,
-			enableRowHeaderSelection: false,
 			multiSelect: false,
 			modifierKeysToMultiSelect: false,
 			enableHorizontalScrollbar: 0,
@@ -503,7 +500,7 @@ angular.module('activitiModeler').controller('ValidateModelCtrl',['$scope', '$ht
 			enableSorting: false,
 			columnDefs: [
 			             {field: 'activityName', displayName: 'Name', width:125},
-			             {field: 'defaultDescription', displayName: 'Description'},
+			             {field: 'defaultDescription', displayName: 'Description', width:613},
 			             {field: 'warning', displayName: 'Critical', cellTemplate:'editor-app/configuration/properties/errorgrid-critical.html', width: 100}
 			             ]
 	    };
@@ -513,7 +510,6 @@ angular.module('activitiModeler').controller('ValidateModelCtrl',['$scope', '$ht
 		$scope.gridApi = gridApi;
 		gridApi.selection.on.rowSelectionChanged($scope, function(row) {
 			if (row.isSelected) {
-				//editorManager.navigateTo(row.entity.activityId);
 				 KISBPM.TOOLBAR.ACTIONS.navigateToProcess(row.entity.activityId);
 				$scope.$hide();
 			}

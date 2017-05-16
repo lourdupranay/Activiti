@@ -33,7 +33,8 @@ public class ModelValidationResource {
 
     @RequestMapping(value = "/rest/model/validate",method = RequestMethod.POST,consumes = MediaType.APPLICATION_JSON_VALUE)
     public List<ValidationError> validate(@RequestBody JsonNode body){
-        BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(body);
+
+    	BpmnModel bpmnModel = new BpmnJsonConverter().convertToBpmnModel(body);
         ProcessValidator validator = new ProcessValidatorFactory().createDefaultProcessValidator();
         List<ValidationError> errors = validator.validate(bpmnModel);
         return errors;
