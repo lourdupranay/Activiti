@@ -232,24 +232,24 @@ public class ErrorPropagation {
 
     List<BoundaryEvent> boundaryEvents = process.findFlowElementsOfType(BoundaryEvent.class, true);
     for (BoundaryEvent boundaryEvent : boundaryEvents) {
-      if (boundaryEvent.getAttachedToRefId() != null && CollectionUtil.isNotEmpty(boundaryEvent.getEventDefinitions()) && boundaryEvent.getEventDefinitions().get(0) instanceof ErrorEventDefinition) {
+    	if (boundaryEvent.getAttachedToRefId() != null && CollectionUtil.isNotEmpty(boundaryEvent.getEventDefinitions()) && boundaryEvent.getEventDefinitions().get(0) instanceof ErrorEventDefinition) {
 
-        ErrorEventDefinition errorEventDef = (ErrorEventDefinition) boundaryEvent.getEventDefinitions().get(0);
-        String eventErrorCode = retrieveErrorCode(bpmnModel, errorEventDef.getErrorCode());
-        
-        if(compareErrorCode == null && eventErrorCode != null){
-           // Do Noting
-        } else if (eventErrorCode == null || compareErrorCode == null || eventErrorCode.equals(compareErrorCode)) {
-        	  List<Event> elementBoundaryEvents = null;
-        		if (eventMap.containsKey(boundaryEvent.getAttachedToRefId()) == false) {
-        			elementBoundaryEvents = new ArrayList<Event>();
-        			eventMap.put(boundaryEvent.getAttachedToRefId(), elementBoundaryEvents);
-        		} else {
-        			elementBoundaryEvents = eventMap.get(boundaryEvent.getAttachedToRefId());
-        		}
-        		elementBoundaryEvents.add(boundaryEvent);
-         }
-       }
+    		ErrorEventDefinition errorEventDef = (ErrorEventDefinition) boundaryEvent.getEventDefinitions().get(0);
+    		String eventErrorCode = retrieveErrorCode(bpmnModel, errorEventDef.getErrorCode());
+
+    		if(compareErrorCode == null && eventErrorCode != null){
+    			// Do Noting
+    		} else if (eventErrorCode == null || eventErrorCode.equals(compareErrorCode)) {
+    			List<Event> elementBoundaryEvents = null;
+    			if (eventMap.containsKey(boundaryEvent.getAttachedToRefId()) == false) {
+    				elementBoundaryEvents = new ArrayList<Event>();
+    				eventMap.put(boundaryEvent.getAttachedToRefId(), elementBoundaryEvents);
+    			} else {
+    				elementBoundaryEvents = eventMap.get(boundaryEvent.getAttachedToRefId());
+    			}
+    			elementBoundaryEvents.add(boundaryEvent);
+    		}
+    	}
     }
     return eventMap;
   }
