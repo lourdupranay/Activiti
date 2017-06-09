@@ -236,17 +236,11 @@ public class ErrorPropagation {
 
         ErrorEventDefinition errorEventDef = (ErrorEventDefinition) boundaryEvent.getEventDefinitions().get(0);
         String eventErrorCode = retrieveErrorCode(bpmnModel, errorEventDef.getErrorCode());
-        List<Event> elementBoundaryEvents = null;
-        if(eventErrorCode == null && compareErrorCode == null){
-            if (eventMap.containsKey(boundaryEvent.getAttachedToRefId()) == false) {
-              elementBoundaryEvents = new ArrayList<Event>();
-              eventMap.put(boundaryEvent.getAttachedToRefId(), elementBoundaryEvents);
-            } else {
-              elementBoundaryEvents = eventMap.get(boundaryEvent.getAttachedToRefId());
-            }
-            elementBoundaryEvents.add(boundaryEvent);
-        } else if (eventErrorCode != null && compareErrorCode != null) {
-        	if(eventErrorCode.equals(compareErrorCode)){
+        
+        if(compareErrorCode == null && eventErrorCode != null){
+           // Do Noting
+        } else if (eventErrorCode == null || compareErrorCode == null || eventErrorCode.equals(compareErrorCode)) {
+        	  List<Event> elementBoundaryEvents = null;
         		if (eventMap.containsKey(boundaryEvent.getAttachedToRefId()) == false) {
         			elementBoundaryEvents = new ArrayList<Event>();
         			eventMap.put(boundaryEvent.getAttachedToRefId(), elementBoundaryEvents);
@@ -254,9 +248,8 @@ public class ErrorPropagation {
         			elementBoundaryEvents = eventMap.get(boundaryEvent.getAttachedToRefId());
         		}
         		elementBoundaryEvents.add(boundaryEvent);
-        	}
-        }
-      }
+         }
+       }
     }
     return eventMap;
   }
